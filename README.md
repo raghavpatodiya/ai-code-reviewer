@@ -1,5 +1,3 @@
-# ai-code-reviewer
-
 # AI Code Reviewer / PR Assistant
 
 An intelligent automated Pull Request reviewer that integrates with GitHub and uses AI + static analysis to review code, detect bugs, suggest improvements, and automatically post review comments back to the PR.
@@ -7,15 +5,26 @@ An intelligent automated Pull Request reviewer that integrates with GitHub and u
 ---
 
 ## 🚀 Features
-- Listens to GitHub Pull Request webhooks
-- Reads changed files and PR description
-- Performs AI-based smart review
-- Detects bugs, smells, security risks, performance issues
-- Generates actionable review comments
-- Supports inline comments
-- Optional scoring & approval decision
-- Stores review history (optional DB)
-- Production-grade Spring Boot backend
+- Listens to GitHub Pull Request webhooks  
+- Reads changed files and PR description  
+- Performs AI-based smart review  
+- Detects bugs, smells, security risks, performance issues  
+- Generates actionable review comments  
+- Supports inline comments  
+- Optional scoring & approval decision  
+- Stores review history (optional DB)  
+- Production-grade Spring Boot backend  
+
+---
+
+## 🧰 Tech Stack
+- Java 21+
+- Spring Boot
+- Gradle
+- OpenAI / LLM API
+- GitHub REST APIs
+- JPA + DB (optional)
+- Docker (optional)
 
 ---
 
@@ -24,7 +33,10 @@ An intelligent automated Pull Request reviewer that integrates with GitHub and u
 ```
 ai-code-reviewer
 │
-├── pom.xml
+├── build.gradle
+├── gradlew
+├── gradlew.bat
+├── settings.gradle
 ├── README.md
 ├── .gitignore
 ├── Dockerfile
@@ -84,7 +96,6 @@ ai-code-reviewer
 │   │   │
 │   │   └── resources
 │   │       ├── application.yml
-│   │       ├── logback.xml
 │   │       └── prompts
 │   │           ├── review-prompt.txt
 │   │           └── inline-comment-prompt.txt
@@ -98,22 +109,36 @@ ai-code-reviewer
 
 ---
 
-## 🧰 Tech Stack
-- Java 17+
-- Spring Boot
-- OpenAI / LLM API
-- GitHub REST APIs
-- JPA + DB (optional)
-- Docker (optional)
+## ▶️ Build & Run
+
+### Build
+```
+./gradlew clean build
+```
+
+### Build Without Tests
+```
+./gradlew clean build -x test
+```
+
+### Run App
+```
+./gradlew bootRun
+```
+
+### Run Tests
+```
+./gradlew test
+```
 
 ---
 
 ## ⚙️ High Level Flow
-1. GitHub PR triggers webhook  
-2. Service receives payload  
-3. Fetch PR files & diffs  
-4. Analyze using AI + rules  
-5. Post review comments  
+1️⃣ GitHub PR triggers webhook  
+2️⃣ Service receives payload  
+3️⃣ Fetch PR files & diffs  
+4️⃣ Analyze using AI + rules  
+5️⃣ Post review comments  
 
 ---
 
