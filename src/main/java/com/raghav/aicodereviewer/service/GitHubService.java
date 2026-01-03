@@ -45,4 +45,22 @@ public class GitHubService {
             System.out.println("GitHub API Error: " + e.getMessage());
         }
     }
+    /**
+     * Placeholder method for future implementation.
+     * This will later call:
+     * GET /repos/{owner}/{repo}/pulls/{number}/files
+     * to fetch changed files and diff patches.
+     */
+    public void fetchChangedFiles(String owner, String repo, int prNumber) {
+        logSection("Fetching Changed Files Placeholder");
+        System.out.println(">>> Placeholder: Fetching changed files for PR " + prNumber);
+        System.out.println(">>> Future Scope: Will call /pulls/{number}/files API here.");
+    }
+
+    /**
+     * Utility formatter for cleaner logs
+     */
+    private void logSection(String title) {
+        System.out.println("\n========== " + title + " ==========\n");
+    }
 }
