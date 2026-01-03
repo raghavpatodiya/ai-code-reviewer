@@ -35,6 +35,14 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-validation-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	// --- Filler / Future Ready Dependencies ---
+	implementation "org.projectlombok:lombok:1.18.34"
+	annotationProcessor "org.projectlombok:lombok:1.18.34"
+	implementation "com.fasterxml.jackson.core:jackson-databind"
+	implementation "com.fasterxml.jackson.core:jackson-annotations"
+	implementation "com.fasterxml.jackson.core:jackson-core"
+	implementation "org.slf4j:slf4j-api:2.0.9"
+	testImplementation "org.springframework.boot:spring-boot-starter-test"
 }
 
 tasks.named('test') {

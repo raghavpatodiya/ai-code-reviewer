@@ -17,6 +17,24 @@ An intelligent automated Pull Request reviewer that integrates with GitHub and u
 
 ---
 
+## 📌 Current Project Status
+This project is under active development. 
+Currently implemented:
+- GitHub Webhook Listener
+- Secure Token Integration
+- GitHub API PR Fetching
+
+Upcoming:
+- Fetch PR changed files
+- Extract diffs
+- AI-based inline code review comments
+
+This repository is used for testing PR workflows,
+webhook reliability, and industry-grade architecture flow.
+
+---
+
+
 ## 🧰 Tech Stack
 - Java 21+
 - Spring Boot
