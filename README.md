@@ -133,6 +133,137 @@ ai-code-reviewer
 
 ---
 
+## ✅ Setup & Execution (Real GitHub Webhook Flow)
+
+### 1️⃣ Prerequisites
+- Java 21+
+- Gradle installed
+- GitHub account & repository
+- Internet connection (for ngrok tunnel)
+
+---
+
+### 2️⃣ Configure GitHub Token
+
+Create a **GitHub Personal Access Token (Classic)**
+
+1. Go to: https://github.com/settings/tokens  
+2. Click: **Generate new token → Classic**
+3. Name: `ai-code-reviewer`
+4. Expiry: 90 days (recommended)
+5. Scopes → enable:
+```
+repo
+```
+6. Generate and copy the token.
+
+---
+
+### 3️⃣ Store Token Securely Using `.env`
+
+Create `.env` in project root (same level as `build.gradle`)
+```
+GITHUB_TOKEN=ghp_your_token_here
+```
+
+Ensure `.env` is in `.gitignore`.
+
+This project uses **spring-dotenv**, so the variable is automatically available.
+
+---
+
+### 4️⃣ Run Application
+```
+./gradlew bootRun
+```
+
+Your app now runs at:
+```
+http://localhost:8080
+```
+
+---
+
+### 5️⃣ Expose Localhost Using ngrok
+
+Install ngrok (first time only):
+```
+brew install ngrok
+```
+
+Login (one time):
+```
+ngrok config add-authtoken <your-ngrok-token>
+```
+
+Start tunnel:
+```
+ngrok http 8080
+```
+
+Copy the HTTPS forwarding URL, e.g.
+```
+https://abc123.ngrok-free.app
+```
+
+---
+
+### 6️⃣ Create GitHub Webhook
+
+Go to:
+```
+Repo → Settings → Webhooks → Add Webhook
+```
+
+Fill:
+```
+Payload URL: https://abc123.ngrok-free.app/webhook/github/pr
+Content type: application/json
+Secret: (leave empty for now)
+```
+
+Select events:
+```
+Let me select individual events
+✔ Pull requests
+```
+
+Save webhook.
+
+---
+
+### 7️⃣ Trigger Real Test
+
+Do ANY of:
+- Create a Pull Request
+- Push commits to existing PR
+- Reopen PR
+
+---
+
+### 🎯 Expected Console Output
+
+Your Spring Boot terminal should show:
+
+```
+======= GITHUB PR EVENT RECEIVED =======
+Action      : opened / synchronize / reopened
+PR Number   : X
+Repo        : your-repo
+Owner       : you
+Author      : you
+========================================
+Calling GitHub API...
+======= GITHUB API RESPONSE =======
+<real GitHub JSON here>
+===================================
+```
+
+Congratulations 🎉  
+You now have a live PR webhook integration working!
+
+---
+
 ## ⚙️ High Level Flow
 1️⃣ GitHub PR triggers webhook  
 2️⃣ Service receives payload  
