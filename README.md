@@ -1,5 +1,3 @@
-# adding test line here
-
 # AI Code Reviewer / PR Assistant
 
 An intelligent automated Pull Request reviewer that integrates with GitHub and uses AI + static analysis to review code, detect bugs, suggest improvements, and automatically post review comments back to the PR.
