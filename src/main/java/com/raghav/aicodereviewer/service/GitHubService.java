@@ -5,12 +5,13 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import io.github.cdimascio.dotenv.Dotenv;
 
 @Service
 public class GitHubService {
 
     private final RestTemplate restTemplate = new RestTemplate();
-    private final String token = System.getenv("GITHUB_TOKEN");
+    private final String token = Dotenv.load().get("GITHUB_TOKEN");
 
     public void fetchPRDetails(String owner, String repo, int prNumber) {
 
